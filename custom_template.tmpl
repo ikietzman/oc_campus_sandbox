@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pcf-stylesheet path="/_resources/xsl/interior.xsl" title="Desktop Preview" extension="html"?>
+<?pcf-stylesheet path="/_resources/xsl/mobile-preview.xsl" title="Mobile Preview" extension=".m.html" alternate="yes" publish="no" ?>
+<!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd">
+
+<document xmlns:ouc="http://omniupdate.com/XSL/Variables">
+
+	<!-- Best practice is to have a couple common empty nodes in case a page needs to have page-unique code. These are only editable in source and therefore admins. -->
+	<headcode></headcode> <!-- Output just before closing head tag. -->
+	<bodycode></bodycode> <!-- Output just after opening body tag. -->
+	<footcode></footcode> <!-- Output just before closing body tag. -->
+
+	<!-- General page properties. Defines user options for page layout. -->
+	<ouc:properties label="config">
+		<parameter name="heading" type="text" group="Everyone" prompt="Page Heading" alt="Page title that displays above the main content region."><!--%echo var="title" --></parameter>
+		<parameter name="image-slider" type="select" group="Everyone" prompt="Image Slider Region" alt="Turns on/off the image slider region above the main content region. (LDP Gallery Asset required).">
+			<option value="true" selected="false">On</option>
+			<option value="false" selected="true">Off</option>
+		</parameter>
+		<parameter name="translator" type="select" group="Everyone" prompt="Language Translation" alt="Turns on/off the language translator widget for this page.">
+			<option value="true" selected="false">On</option>
+			<option value="false" selected="true">Off</option>
+		</parameter>
+
+		<!-- Left Column Content -->
+		<parameter section="Left Column Options" name="left-enable" type="select" prompt="Enable Column" alt="Turns on/off the left column." group="Everyone"><!--%echo var="leftcol" encoding="none" -->
+		</parameter>
+		<parameter name="left-nav" type="radio" prompt="Directory Navigation" alt="Turns on/off the directory navigation for this column." group="Everyone">
+			<option value="true" selected="true">On</option>
+			<option value="false" selected="false">Off</option>
+		</parameter>
+		<parameter name="left-quicklinks" type="radio" prompt="Quick Links" alt="Turns on/off the quick links panel for this column." group="Everyone">
+			<option value="true" selected="false">On</option>
+			<option value="false" selected="true">Off</option>
+		</parameter>
+		<parameter name="left-content" type="radio" prompt="Content Region" alt="Turns on/off the side content region for this column." group="Everyone">
+			<option value="true" selected="true">On</option>
+			<option value="false" selected="false">Off</option>
+		</parameter>
+
+		<!-- Right Column Content -->
+		<parameter section="Right Column Options" name="right-enable" type="select" prompt="Enable Column" alt="Turns on/off the right column." group="Everyone"><!--%echo var="rightcol" encoding="none" -->
+		</parameter>
+		<parameter name="right-nav" type="radio" prompt="Directory Navigation" alt="Turns on/off the directory navigation for this column." group="Everyone">
+			<option value="true" selected="false">On</option>
+			<option value="false" selected="true">Off</option>
+		</parameter>
+		<parameter name="right-quicklinks" type="radio" prompt="Quick Links" alt="Turns on/off the quick links panel for this column." group="Everyone">
+			<option value="true" selected="true">On</option>
+			<option value="false" selected="false">Off</option>
+		</parameter>
+		<parameter name="right-content" type="radio" prompt="Content Region" alt="Turns on/off the side content region for this column." group="Everyone">
+			<option value="true" selected="true">On</option>
+			<option value="false" selected="false">Off</option>
+		</parameter>
+	</ouc:properties>
+
+	<!-- Meta page properites. Defines the meta elements that are placed in the head of the HTML document. -->
+	<ouc:properties label="metadata">
+		<title><!--%echo var="title" --></title>
+		<meta name="Description" content="<!--%echo var="description" -->" />
+	</ouc:properties>
+
+	<!-- Editable region. An ouc:div defines an editable region so a user can edit content within the WYSIWYG editor. Every ouc:div must have a unique label. -->
+	<ouc:div label="maincontent" group="Everyone" button-text="Main Content">
+		<ouc:editor csspath="/_resources/ou/editor/wysiwyg.css" cssmenu="/_resources/ou/editor/styles.txt" />
+
+		<p>&nbsp;</p>
+	</ouc:div>
+
+	<ouc:div label="image-slider" group="Everyone" button-text="Image Slider" ldp-type="flexslider"><ouc:editor wysiwyg="gallery" /></ouc:div>
+
+	<ouc:div label="left-quicklinks" group="Everyone" button-text="Quick Links">
+		<h4>Quick Links</h4>
+		<ul>
+			<li><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
+			<li><a href="#">Link 3</a></li>
+		</ul>
+	</ouc:div>
+
+	<ouc:div label="right-quicklinks" group="Everyone" button-text="Quick Links">
+		<h4>Quick Links</h4>
+		<ul>
+			<li><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
+			<li><a href="#">Link 3</a></li>
+		</ul>
+	</ouc:div>
+
+	<ouc:div label="left-content" group="Everyone" button-text="Content Region">
+		</ouc:div>
+
+	<ouc:div label="right-content" group="Everyone" button-text="Content Region">
+		</ouc:div>
+</document>

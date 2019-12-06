@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tcf>
+	<title>Custom Template Page</title>
+
+	<variable-list>
+		<!-- general page setup -->
+		<variable section="General Page Setup" name="title" type="text" prompt="Page Title" alt="Enter the page title. This will also be displayed by search engines as well as the web browser window."></variable>
+		<variable name="description" type="text" rows="3" prompt="Description" alt="Enter a short description of the page, to be displayed by search engines."></variable>
+		<!-- Determine page type -->
+		<variable name="leftcol" type="select" output="xml" prompt="Left Column" alt="Turn on/off the left column.">
+			<option value="1" selected="true">On</option>
+			<option value="0" selected="false">Off</option>
+		</variable>
+
+		<variable name="rightcol" type="select" output="xml" prompt="Right Column" alt="Turn on/off the right column.">
+			<option value="1" selected="true">On</option>
+			<option value="0" selected="false">Off</option>
+		</variable>
+		<!-- A safer way to create a file, forces PCF file extension -->
+		<variable section="File Configuration" name="pcf-filename" prompt="Filename" alt="Enter a filename using only lowercase letters, underscores, or dashes">newfile</variable>
+		<variable name="autonavigation" prompt="Add Navigation Item" type="select" alt="Specify if this page should be added to the current directory's navigation automatically.">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</variable>
+	</variable-list>
+
+	<template-list>
+		<template
+		filename="{pcf-filename}"
+		display-filename="no"
+		extension="pcf"
+		preferred-redirect="yes"
+		autonav="{autonavigation}">interior.tmpl</template>
+	</template-list>
+
+	<navigation-list>
+		<navigation name="true" path="_sidenav.ounav" group="Everyone" publish="yes"><li><a href="{ox_autonav:shorturl}">{title}</a></li></navigation>
+		<navigation name="false" path="_sidenav.ounav" group="Everyone" publish="yes"></navigation>
+	</navigation-list>
+</tcf>
